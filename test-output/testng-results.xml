@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-04-13T19:06:51 IST" name="Default suite" finished-at="2021-04-13T19:07:05 IST" duration-ms="13847">
+    <groups>
+    </groups>
+    <test started-at="2021-04-13T19:06:51 IST" name="Default test" finished-at="2021-04-13T19:07:05 IST" duration-ms="13847">
+      <class name="SeleniumTest.SeleniumCodingChallenges.WebDriverManagerTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:SeleniumTest.SeleniumCodingChallenges.WebDriverManagerTest@3c0be339]" started-at="2021-04-13T19:06:51 IST" name="setup" finished-at="2021-04-13T19:07:00 IST" duration-ms="8186" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="EcommerceTest()[pri:0, instance:SeleniumTest.SeleniumCodingChallenges.WebDriverManagerTest@3c0be339]" started-at="2021-04-13T19:07:00 IST" name="EcommerceTest" finished-at="2021-04-13T19:07:04 IST" duration-ms="4879" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EcommerceTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:SeleniumTest.SeleniumCodingChallenges.WebDriverManagerTest@3c0be339]" started-at="2021-04-13T19:07:04 IST" name="tearDown" finished-at="2021-04-13T19:07:05 IST" duration-ms="724" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- SeleniumTest.SeleniumCodingChallenges.WebDriverManagerTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
