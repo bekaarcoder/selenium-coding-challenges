@@ -29,19 +29,21 @@ public class Day2Challenge {
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		List<String> productsFetched = getProductsFromCategory("Limited time offers");
+		List<Product> productsFetched = getProductsFromCategory("Recommended For You");
 
 		System.out.println("Products Fetched: " + productsFetched.size());
 
-		for (String product : productsFetched) {
-			System.out.println("Product Name: " + product);
+		for (Product product : productsFetched) {
+			System.out.println("Product Name: " + product.name);
+			System.out.println("Product Price: " + product.price);
+			System.out.println("");
 		}
 
 		driver.quit();
 
 	}
 
-	public static List<String> getProductsFromCategory(String categoryName) {
+	public static List<Product> getProductsFromCategory(String categoryName) {
 		String categoryXpath = "//h3[contains(text(), '" + categoryName + "')]";
 		String productsXpath = "//h3[contains(text(), '" + categoryName
 				+ "')]/../../following-sibling::div//div[@class='swiper-wrapper']/div";
@@ -64,13 +66,20 @@ public class Day2Challenge {
 
 		List<WebElement> productsList = driver.findElements(By.xpath(productsXpath));
 		List<String> productsFetched = new ArrayList<String>();
+		
+		List<Product> productsFound = new ArrayList<Product>();
 
 		while (nextBtnVisible) {
 			for (int i = 1; i <= productsList.size(); i++) {
 				String productXpath = "//h3[contains(text(), '" + categoryName +"')]/../../following-sibling::div//div[@class='swiper-wrapper']/div["
 						+ i + "]//a//div[@data-qa='product-name']/div";
+				String productPriceXpath = "//h3[contains(text(), '" + categoryName +"')]/../../following-sibling::div//div[@class='swiper-wrapper']/div["
+						+ i + "]//a//strong[@data-qa='productPrice']";
 				String productName = driver.findElement(By.xpath(productXpath)).getText().trim();
+				String productPrice = driver.findElement(By.xpath(productPriceXpath)).getText().trim();
 				if (!productName.isEmpty()) {
+					Product prd = new Product(productName, Double.parseDouble(productPrice));
+					productsFound.add(prd);
 					productsFetched.add(productName);
 				}
 			}
@@ -78,7 +87,7 @@ public class Day2Challenge {
 			nextBtnVisible = driver.findElement(By.xpath(nextButtonXpath)).isDisplayed();
 		}
 
-		return productsFetched;
+		return productsFound;
 	}
 
 }
